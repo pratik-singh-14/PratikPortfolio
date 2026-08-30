@@ -1,0 +1,1249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Resume | Pratik Singh</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:'Orbitron',sans-serif;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+#progress{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:3px;
+
+    background:#ff003c;
+
+    box-shadow:0 0 15px #ff003c;
+
+    z-index:9999;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(5,5,5,.92);
+
+    backdrop-filter:blur(15px);
+
+    border-bottom:
+        1px solid rgba(255,0,60,.2);
+
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:#fff;
+    text-decoration:none;
+
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.ps{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #ff003c;
+
+    color:#ff003c;
+
+    transition:.3s;
+}
+
+.logo:hover .ps{
+    box-shadow:
+        0 0 10px #ff003c,
+        0 0 30px #ff003c;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+
+    list-style:none;
+}
+
+nav ul a{
+    color:#aaa;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+nav ul a:hover,
+nav ul a.active{
+    color:#ff003c;
+
+    text-shadow:
+        0 0 10px #ff003c;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:48vh;
+
+    padding:
+        150px
+        8%
+        70px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.label{
+    color:#ff003c;
+
+    font-size:11px;
+
+    letter-spacing:5px;
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:
+        clamp(55px,9vw,120px);
+
+    line-height:.9;
+
+    letter-spacing:-5px;
+}
+
+.hero h1 span{
+    color:transparent;
+
+    -webkit-text-stroke:
+        1px #ff003c;
+}
+
+.hero p{
+    max-width:700px;
+
+    margin-top:35px;
+
+    color:#999;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.8;
+}
+
+/* =========================
+   RESUME AREA
+========================= */
+
+.resume-section{
+    padding:
+        80px
+        8%
+        120px;
+
+    background:#080808;
+
+    border-top:
+        1px solid rgba(255,0,60,.1);
+}
+
+/* =========================
+   RESUME CARD
+========================= */
+
+.resume{
+    max-width:1000px;
+
+    margin:auto;
+
+    background:#fff;
+
+    color:#111;
+
+    padding:55px;
+
+    box-shadow:
+        0 0 50px
+        rgba(0,0,0,.5);
+}
+
+/* =========================
+   RESUME HEADER
+========================= */
+
+.resume-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:30px;
+
+    padding-bottom:30px;
+
+    border-bottom:
+        3px solid #111;
+}
+
+.resume-header h2{
+    font-size:35px;
+
+    letter-spacing:2px;
+}
+
+.resume-header h2 span{
+    color:#ff003c;
+}
+
+.resume-header p{
+    margin-top:8px;
+
+    color:#555;
+
+    font-family:Arial,sans-serif;
+}
+
+.resume-contact{
+    text-align:right;
+
+    font-family:Arial,sans-serif;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.resume-contact a{
+    color:#111;
+
+    text-decoration:none;
+}
+
+/* =========================
+   RESUME GRID
+========================= */
+
+.resume-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.5fr .7fr;
+
+    gap:45px;
+
+    margin-top:35px;
+}
+
+.resume h3{
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    margin-bottom:20px;
+
+    padding-bottom:8px;
+
+    border-bottom:
+        1px solid #ddd;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-text{
+    color:#444;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.7;
+
+    font-size:14px;
+}
+
+/* =========================
+   EXPERIENCE
+========================= */
+
+.timeline-item{
+    margin-bottom:30px;
+
+    position:relative;
+}
+
+.timeline-item h4{
+    font-size:15px;
+}
+
+.timeline-item .date{
+    margin-top:5px;
+
+    color:#ff003c;
+
+    font-size:10px;
+
+    font-family:Arial,sans-serif;
+}
+
+.timeline-item p{
+    margin-top:10px;
+
+    color:#555;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.7;
+
+    font-size:13px;
+}
+
+/* =========================
+   EDUCATION
+========================= */
+
+.education-item{
+    margin-bottom:25px;
+}
+
+.education-item h4{
+    font-size:14px;
+}
+
+.education-item p{
+    margin-top:5px;
+
+    color:#555;
+
+    font-family:Arial,sans-serif;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skill{
+    margin-bottom:15px;
+}
+
+.skill-name{
+    display:flex;
+
+    justify-content:space-between;
+
+    font-family:Arial,sans-serif;
+
+    font-size:12px;
+
+    margin-bottom:6px;
+}
+
+.skill-bar{
+    height:5px;
+
+    background:#ddd;
+}
+
+.skill-bar span{
+    display:block;
+
+    height:100%;
+
+    background:#ff003c;
+}
+
+.html{
+    width:90%;
+}
+
+.css{
+    width:85%;
+}
+
+.js{
+    width:75%;
+}
+
+.java{
+    width:65%;
+}
+
+.python{
+    width:60%;
+}
+
+.git{
+    width:70%;
+}
+
+/* =========================
+   CERTIFICATES
+========================= */
+
+.certificates{
+    margin-top:35px;
+}
+
+.certificate{
+    padding:12px 0;
+
+    border-bottom:
+        1px solid #ddd;
+
+    font-family:Arial,sans-serif;
+
+    font-size:13px;
+}
+
+/* =========================
+   DOWNLOAD
+========================= */
+
+.resume-actions{
+    max-width:1000px;
+
+    margin:
+        30px
+        auto
+        0;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+}
+
+.resume-button{
+    padding:
+        14px
+        22px;
+
+    border:
+        1px solid #ff003c;
+
+    color:#fff;
+
+    background:#ff003c;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.resume-button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 20px
+        rgba(255,0,60,.5);
+}
+
+.resume-button.secondary{
+    background:transparent;
+
+    color:#ff003c;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:
+        30px
+        8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#666;
+
+    border-top:
+        1px solid rgba(255,0,60,.15);
+
+    font-size:10px;
+}
+
+footer a{
+    color:#aaa;
+
+    text-decoration:none;
+
+    margin-left:20px;
+}
+
+footer a:hover{
+    color:#ff003c;
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@media print{
+
+    body{
+        background:#fff;
+    }
+
+    nav,
+    footer,
+    .hero,
+    .resume-actions{
+        display:none !important;
+    }
+
+    .resume-section{
+        padding:0;
+
+        background:#fff;
+    }
+
+    .resume{
+        box-shadow:none;
+
+        max-width:none;
+
+        padding:30px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    nav{
+        padding:0 20px;
+    }
+
+    nav ul{
+        gap:9px;
+    }
+
+    nav ul a{
+        font-size:7px;
+    }
+
+    .brand{
+        display:none;
+    }
+
+    .hero{
+        padding:
+            130px
+            25px
+            60px;
+    }
+
+    .resume-section{
+        padding:
+            60px
+            15px
+            80px;
+    }
+
+    .resume{
+        padding:25px;
+    }
+
+    .resume-header{
+        flex-direction:column;
+    }
+
+    .resume-contact{
+        text-align:left;
+    }
+
+    .resume-grid{
+        grid-template-columns:1fr;
+
+        gap:30px;
+    }
+
+    .resume-actions{
+        flex-direction:column;
+
+        margin:
+            25px
+            15px
+            0;
+    }
+
+    .resume-button{
+        text-align:center;
+    }
+
+    footer{
+        flex-direction:column;
+
+        gap:15px;
+
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<div id="progress"></div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+
+        <span class="ps">
+            PS
+        </span>
+
+        <span class="brand">
+            PRATIK
+        </span>
+
+    </a>
+
+    <ul>
+
+        <li>
+            <a href="index.html">
+                HOME
+            </a>
+        </li>
+
+        <li>
+            <a href="about.html">
+                ABOUT
+            </a>
+        </li>
+
+        <li>
+            <a href="skills.html">
+                SKILLS
+            </a>
+        </li>
+
+        <li>
+            <a href="projects.html">
+                PROJECTS
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                CONTACT
+            </a>
+        </li>
+
+        <li>
+            <a href="resume.html" class="active">
+                RESUME
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="label">
+        MY PROFILE
+    </div>
+
+    <h1>
+        MY
+        <span>RESUME.</span>
+    </h1>
+
+    <p>
+        A concise overview of my education, technical
+        skills, projects and development journey.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     RESUME
+========================= -->
+
+<section class="resume-section">
+
+    <div class="resume" id="resume">
+
+
+        <!-- HEADER -->
+
+        <div class="resume-header">
+
+            <div>
+
+                <h2>
+                    PRATIK
+                    <span>SINGH</span>
+                </h2>
+
+                <p>
+                    Student & Web Developer
+                </p>
+
+            </div>
+
+
+            <div class="resume-contact">
+
+                <div>
+                    Uttar Pradesh, India
+                </div>
+
+                <div>
+                    <a href="mailto:your-email@example.com">
+                        singhpratik0143@gmail.com
+                    </a>
+                </div>
+
+                <div>
+                    GitHub / Instagram
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- GRID -->
+
+        <div class="resume-grid">
+
+
+            <!-- LEFT -->
+
+            <div>
+
+
+                <!-- PROFILE -->
+
+                <section>
+
+                    <h3>
+                        PROFILE
+                    </h3>
+
+                    <p class="profile-text">
+
+                        Class 12 student and aspiring web
+                        developer with an interest in creating
+                        modern websites, learning programming
+                        and building practical technology
+                        projects.
+
+                    </p>
+
+                </section>
+
+
+                <!-- PROJECT EXPERIENCE -->
+
+                <section style="margin-top:40px;">
+
+                    <h3>
+                        PROJECT EXPERIENCE
+                    </h3>
+
+
+                    <div class="timeline-item">
+
+                        <h4>
+                            Pratik Portfolio
+                        </h4>
+
+                        <div class="date">
+                            2026
+                        </div>
+
+                        <p>
+                            Designed and developed a responsive
+                            personal portfolio using HTML, CSS
+                            and JavaScript.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <h4>
+                            TravelGo
+                        </h4>
+
+                        <div class="date">
+                            2026
+                        </div>
+
+                        <p>
+                            Created a travel booking website
+                            concept covering buses, flights,
+                            hotels and trains.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <h4>
+                            Pratik Grocery
+                        </h4>
+
+                        <div class="date">
+                            2026
+                        </div>
+
+                        <p>
+                            Built an online grocery shopping
+                            interface with product browsing
+                            and cart functionality.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <h4>
+                            OTP Authentication System
+                        </h4>
+
+                        <div class="date">
+                            2026
+                        </div>
+
+                        <p>
+                            Experimented with Node.js,
+                            Express, MongoDB and email
+                            verification for authentication.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- EDUCATION -->
+
+                <section style="margin-top:40px;">
+
+                    <h3>
+                        EDUCATION
+                    </h3>
+
+
+                    <div class="education-item">
+
+                        <h4>
+                            Class 12 — Science
+                        </h4>
+
+                        <p>
+                            DALIMSS Sunbeam School, CBSE
+                        </p>
+
+                    </div>
+
+
+                    <div class="education-item">
+
+                        <h4>
+                            Class 10
+                        </h4>
+
+                        <p>
+                            Riverdale Global School, CBSE
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <aside>
+
+
+                <!-- SKILLS -->
+
+                <section>
+
+                    <h3>
+                        SKILLS
+                    </h3>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+
+                            <span>
+                                HTML
+                            </span>
+
+                            <span>
+                                90%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+                            <span class="html"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+
+                            <span>
+                                CSS
+                            </span>
+
+                            <span>
+                                85%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+                            <span class="css"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+
+                            <span>
+                                JavaScript
+                            </span>
+
+                            <span>
+                                75%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+                            <span class="js"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+
+                            <span>
+                                Java
+                            </span>
+
+                            <span>
+                                65%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+                            <span class="java"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+
+                            <span>
+                                Python
+                            </span>
+
+                            <span>
+                                60%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+                            <span class="python"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+
+                            <span>
+                                Git
+                            </span>
+
+                            <span>
+                                70%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+                            <span class="git"></span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- TECHNOLOGIES -->
+
+                <section style="margin-top:40px;">
+
+                    <h3>
+                        TECHNOLOGIES
+                    </h3>
+
+                    <p class="profile-text">
+
+                        HTML5<br><br>
+                        CSS3<br><br>
+                        JavaScript<br><br>
+                        Java<br><br>
+                        Python<br><br>
+                        Node.js<br><br>
+                        Express<br><br>
+                        MongoDB<br><br>
+                        Git & GitHub
+
+                    </p>
+
+                </section>
+
+
+                <!-- CERTIFICATES -->
+
+                <section class="certificates">
+
+                    <h3>
+                        CERTIFICATES
+                    </h3>
+
+                    <div class="certificate">
+                        Coding Certificate
+                    </div>
+
+                    <div class="certificate">
+                        Great Learning
+                    </div>
+
+                </section>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+
+    <div class="resume-actions">
+
+        <button
+            class="resume-button"
+            onclick="downloadResume()"
+        >
+            PRINT / SAVE PDF
+        </button>
+
+        <a
+            href="index.html"
+            class="resume-button secondary"
+        >
+            BACK TO HOME
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        © 2026 Pratik Singh
+    </div>
+
+    <div>
+
+        <a
+            href="https://github.com/"
+            target="_blank"
+        >
+            GitHub
+        </a>
+
+        <a
+            href="#"
+            target="_blank"
+        >
+            Instagram
+        </a>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   SCROLL PROGRESS
+========================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scroll =
+            window.scrollY;
+
+        const height =
+            document.documentElement.scrollHeight
+            - window.innerHeight;
+
+        const progress =
+            height > 0
+            ? (scroll / height) * 100
+            : 0;
+
+        document.getElementById(
+            "progress"
+        ).style.width =
+            progress + "%";
+
+    },
+    {passive:true}
+);
+
+
+/* =========================
+   PRINT / PDF
+========================= */
+
+function downloadResume(){
+
+    window.print();
+
+}
+
+</script>
+
+</body>
+</html>

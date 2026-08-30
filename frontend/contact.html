@@ -1,0 +1,1076 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact | Pratik Singh</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:'Orbitron',sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+#progress{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:3px;
+
+    background:#ff003c;
+
+    box-shadow:0 0 15px #ff003c;
+
+    z-index:9999;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(5,5,5,.92);
+
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(255,0,60,.2);
+
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:#fff;
+    text-decoration:none;
+
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.ps{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #ff003c;
+
+    color:#ff003c;
+
+    transition:.3s;
+}
+
+.logo:hover .ps{
+    box-shadow:
+        0 0 10px #ff003c,
+        0 0 30px #ff003c;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+
+    list-style:none;
+}
+
+nav ul a{
+    color:#aaa;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+nav ul a:hover,
+nav ul a.active{
+    color:#ff003c;
+
+    text-shadow:0 0 10px #ff003c;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:52vh;
+
+    padding:
+        150px
+        8%
+        70px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.label{
+    color:#ff003c;
+
+    font-size:11px;
+
+    letter-spacing:5px;
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:
+        clamp(55px,9vw,120px);
+
+    line-height:.9;
+
+    letter-spacing:-5px;
+}
+
+.hero h1 span{
+    color:transparent;
+
+    -webkit-text-stroke:1px #ff003c;
+}
+
+.hero p{
+    max-width:700px;
+
+    margin-top:35px;
+
+    color:#999;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.8;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    padding:
+        80px
+        8%
+        120px;
+
+    background:#080808;
+
+    border-top:1px solid rgba(255,0,60,.1);
+
+    display:grid;
+
+    grid-template-columns:
+        .8fr 1.2fr;
+
+    gap:70px;
+}
+
+/* =========================
+   CONTACT INFO
+========================= */
+
+.info-heading h2{
+    font-size:
+        clamp(30px,4vw,55px);
+
+    line-height:1.1;
+}
+
+.info-heading h2 span{
+    color:#ff003c;
+}
+
+.info-heading p{
+    margin-top:25px;
+
+    color:#888;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.8;
+}
+
+.info-list{
+    margin-top:40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+}
+
+.info-card{
+    padding:20px;
+
+    border:1px solid rgba(255,0,60,.2);
+
+    transition:.3s;
+}
+
+.info-card:hover{
+    border-color:#ff003c;
+
+    transform:translateX(8px);
+
+    box-shadow:
+        0 0 20px rgba(255,0,60,.12);
+}
+
+.info-card small{
+    color:#666;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+}
+
+.info-card strong{
+    display:block;
+
+    margin-top:8px;
+
+    font-size:12px;
+
+    word-break:break-word;
+}
+
+.info-card a{
+    color:#fff;
+
+    text-decoration:none;
+}
+
+.info-card a:hover{
+    color:#ff003c;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-box{
+    padding:35px;
+
+    border:1px solid rgba(255,0,60,.25);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,0,60,.05),
+            rgba(255,255,255,.01)
+        );
+}
+
+.form-box h3{
+    font-size:22px;
+
+    margin-bottom:30px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#777;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+}
+
+.input-group input,
+.input-group textarea{
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid #252525;
+
+    outline:none;
+
+    background:#050505;
+
+    color:#fff;
+
+    font-family:Arial,sans-serif;
+
+    transition:.3s;
+}
+
+.input-group textarea{
+    min-height:150px;
+
+    resize:vertical;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+    border-color:#ff003c;
+
+    box-shadow:
+        0 0 15px rgba(255,0,60,.12);
+}
+
+.send-btn{
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    background:#ff003c;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-family:'Orbitron',sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    box-shadow:
+        0 0 15px rgba(255,0,60,.4);
+
+    transition:.3s;
+}
+
+.send-btn:hover{
+    box-shadow:
+        0 0 20px #ff003c,
+        0 0 40px rgba(255,0,60,.4);
+
+    transform:translateY(-3px);
+}
+
+.send-btn:disabled{
+    opacity:.6;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+#message{
+    display:none;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border:1px solid #ff003c;
+
+    color:#ff003c;
+
+    font-family:Arial,sans-serif;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social{
+    margin-top:50px;
+}
+
+.social h3{
+    font-size:14px;
+
+    margin-bottom:20px;
+}
+
+.social-links{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.social-links a{
+    padding:
+        12px
+        16px;
+
+    color:#aaa;
+
+    text-decoration:none;
+
+    border:1px solid rgba(255,0,60,.25);
+
+    font-size:9px;
+
+    transition:.3s;
+}
+
+.social-links a:hover{
+    color:#fff;
+
+    border-color:#ff003c;
+
+    background:rgba(255,0,60,.08);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:
+        30px
+        8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#666;
+
+    border-top:1px solid rgba(255,0,60,.15);
+
+    font-size:10px;
+}
+
+footer a{
+    color:#aaa;
+
+    text-decoration:none;
+
+    margin-left:20px;
+}
+
+footer a:hover{
+    color:#ff003c;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    nav{
+        padding:0 20px;
+    }
+
+    nav ul{
+        gap:9px;
+    }
+
+    nav ul a{
+        font-size:7px;
+    }
+
+    .brand{
+        display:none;
+    }
+
+    .hero{
+        padding:
+            130px
+            25px
+            60px;
+    }
+
+    .contact{
+        grid-template-columns:1fr;
+
+        padding:
+            60px
+            25px
+            90px;
+    }
+
+    .form-box{
+        padding:25px;
+    }
+
+    footer{
+        flex-direction:column;
+
+        gap:15px;
+
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<div id="progress"></div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+
+        <span class="ps">
+            PS
+        </span>
+
+        <span class="brand">
+            PRATIK
+        </span>
+
+    </a>
+
+    <ul>
+
+        <li>
+            <a href="index.html">
+                HOME
+            </a>
+        </li>
+
+        <li>
+            <a href="about.html">
+                ABOUT
+            </a>
+        </li>
+
+        <li>
+            <a href="skills.html">
+                SKILLS
+            </a>
+        </li>
+
+        <li>
+            <a href="projects.html">
+                PROJECTS
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html" class="active">
+                CONTACT
+            </a>
+        </li>
+
+        <li>
+            <a href="resume.html">
+                RESUME
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="label">
+        GET IN TOUCH
+    </div>
+
+    <h1>
+        CONTACT
+        <span>ME.</span>
+    </h1>
+
+    <p>
+        Have an idea, project or collaboration in mind?
+        Send a message and let's connect.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     CONTACT SECTION
+========================= -->
+
+<section class="contact">
+
+
+    <!-- CONTACT INFORMATION -->
+
+    <div>
+
+        <div class="info-heading">
+
+            <div class="label">
+                CONNECT
+            </div>
+
+            <h2>
+                Let's Start
+                <span>A Conversation.</span>
+            </h2>
+
+            <p>
+                I'm always interested in learning,
+                building projects and connecting with
+                people interested in technology.
+            </p>
+
+        </div>
+
+
+        <div class="info-list">
+
+            <div class="info-card">
+
+                <small>
+                    EMAIL
+                </small>
+
+                <strong>
+                    <a href="mailto:your-email@example.com">
+                        your-email@example.com
+                    </a>
+                </strong>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <small>
+                    LOCATION
+                </small>
+
+                <strong>
+                    Uttar Pradesh, India
+                </strong>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <small>
+                    STATUS
+                </small>
+
+                <strong>
+                    Open to Learning & Projects
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SOCIAL -->
+
+        <div class="social">
+
+            <h3>
+                FIND ME ONLINE
+            </h3>
+
+            <div class="social-links">
+
+                <a
+                    href="https://github.com/"
+                    target="_blank"
+                >
+                    GITHUB
+                </a>
+
+                <a
+                    href="#"
+                    target="_blank"
+                >
+                    INSTAGRAM
+                </a>
+
+                <a
+                    href="#"
+                    target="_blank"
+                >
+                    LINKEDIN
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONTACT FORM -->
+
+    <div class="form-box">
+
+        <h3>
+            SEND A MESSAGE
+        </h3>
+
+        <form id="contactForm">
+
+            <div class="input-group">
+
+                <label for="name">
+                    YOUR NAME
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="email">
+                    EMAIL
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="subject">
+                    SUBJECT
+                </label>
+
+                <input
+                    type="text"
+                    id="subject"
+                    placeholder="What is this about?"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="userMessage">
+                    MESSAGE
+                </label>
+
+                <textarea
+                    id="userMessage"
+                    placeholder="Write your message..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="send-btn"
+                id="sendButton"
+            >
+                SEND MESSAGE
+            </button>
+
+        </form>
+
+
+        <div id="message"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        © 2026 Pratik Singh
+    </div>
+
+    <div>
+
+        <a
+            href="https://github.com/"
+            target="_blank"
+        >
+            GitHub
+        </a>
+
+        <a
+            href="#"
+            target="_blank"
+        >
+            Instagram
+        </a>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   SCROLL PROGRESS
+========================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scroll =
+            window.scrollY;
+
+        const height =
+            document.documentElement.scrollHeight
+            - window.innerHeight;
+
+        const progress =
+            height > 0
+            ? (scroll / height) * 100
+            : 0;
+
+        document.getElementById(
+            "progress"
+        ).style.width =
+            progress + "%";
+
+    },
+    {passive:true}
+);
+
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+const contactForm =
+    document.getElementById("contactForm");
+
+const messageBox =
+    document.getElementById("message");
+
+const sendButton =
+    document.getElementById("sendButton");
+
+
+contactForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        const name =
+            document
+            .getElementById("name")
+            .value
+            .trim();
+
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim();
+
+        const subject =
+            document
+            .getElementById("subject")
+            .value
+            .trim();
+
+        const userMessage =
+            document
+            .getElementById("userMessage")
+            .value
+            .trim();
+
+
+        /* Basic validation */
+
+        if(
+            !name ||
+            !email ||
+            !subject ||
+            !userMessage
+        ){
+
+            messageBox.style.display =
+                "block";
+
+            messageBox.innerHTML =
+                "✕ Please fill in all fields.";
+
+            return;
+        }
+
+
+        /* Disable button */
+
+        sendButton.disabled = true;
+
+        sendButton.textContent =
+            "SENDING...";
+
+
+        messageBox.style.display =
+            "block";
+
+        messageBox.innerHTML =
+            "Connecting to server...";
+
+
+        try{
+
+            const response =
+                await fetch(
+                    "http://localhost:5000/api/contact",
+                    {
+                        method:"POST",
+
+                        headers:{
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:JSON.stringify({
+
+                            name:name,
+
+                            email:email,
+
+                            subject:subject,
+
+                            message:userMessage
+
+                        })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if(data.success){
+
+                messageBox.innerHTML =
+                    "✓ " + data.message;
+
+                contactForm.reset();
+
+            }
+
+            else{
+
+                messageBox.innerHTML =
+                    "✕ " +
+                    (data.message ||
+                    "Something went wrong.");
+
+            }
+
+        }
+
+        catch(error){
+
+            console.error(
+                "Contact error:",
+                error
+            );
+
+            messageBox.innerHTML =
+                "✕ Cannot connect to the backend. " +
+                "Make sure server.js is running.";
+
+        }
+
+
+        /* Enable button again */
+
+        sendButton.disabled = false;
+
+        sendButton.textContent =
+            "SEND MESSAGE";
+
+    }
+);
+
+</script>
+
+</body>
+</html>

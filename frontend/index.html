@@ -1,0 +1,931 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pratik Singh | Student & Web Developer</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:'Orbitron',sans-serif;
+    overflow-x:hidden;
+}
+
+/* ===============================
+   SCROLL PROGRESS
+================================ */
+
+#progress{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:3px;
+    background:#ff003c;
+    box-shadow:0 0 15px #ff003c;
+    z-index:10000;
+}
+
+/* ===============================
+   CINEMATIC CURTAINS
+================================ */
+
+#loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#000;
+    pointer-events:none;
+}
+
+.curtain{
+    position:absolute;
+    top:0;
+    width:51%;
+    height:100%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #020202 0px,
+            #111 18px,
+            #030303 36px,
+            #151515 54px,
+            #020202 72px
+        );
+
+    box-shadow:
+        inset 0 0 100px #000,
+        inset 0 0 40px rgba(255,0,60,.15);
+}
+
+.curtain::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,.04) 0,
+            transparent 10px,
+            rgba(0,0,0,.55) 20px
+        );
+}
+
+.curtain::after{
+    content:"";
+    position:absolute;
+    top:0;
+    width:5px;
+    height:100%;
+    background:#ff003c;
+    box-shadow:
+        0 0 10px #ff003c,
+        0 0 30px #ff003c,
+        0 0 70px #ff003c;
+}
+
+.left{
+    left:0;
+    border-right:4px solid #ff003c;
+    animation:openLeft 3s cubic-bezier(.77,0,.175,1) forwards;
+}
+
+.left::after{
+    right:-5px;
+}
+
+.right{
+    right:0;
+    border-left:4px solid #ff003c;
+    animation:openRight 3s cubic-bezier(.77,0,.175,1) forwards;
+}
+
+.right::after{
+    left:-5px;
+}
+
+.loader-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:10;
+
+    font-size:clamp(25px,5vw,65px);
+    letter-spacing:10px;
+    font-weight:800;
+
+    text-shadow:
+        0 0 10px #fff,
+        0 0 30px #ff003c,
+        0 0 60px #ff003c;
+
+    animation:textOut .8s ease 2.3s forwards;
+}
+
+@keyframes openLeft{
+    to{
+        transform:translateX(-96%);
+    }
+}
+
+@keyframes openRight{
+    to{
+        transform:translateX(96%);
+    }
+}
+
+@keyframes textOut{
+    to{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(1.3);
+    }
+}
+
+@keyframes loaderOut{
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(5,5,5,.85);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(255,0,60,.2);
+
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    text-decoration:none;
+    color:#fff;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.ps{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #ff003c;
+    color:#ff003c;
+
+    transition:.3s;
+}
+
+.logo:hover .ps{
+    box-shadow:
+        0 0 10px #ff003c,
+        0 0 30px #ff003c;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav ul a{
+    color:#bbb;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+nav ul a:hover{
+    color:#fff;
+    text-shadow:0 0 10px #ff003c;
+}
+
+/* ===============================
+   HERO
+================================ */
+
+.hero{
+    min-height:100vh;
+
+    padding:130px 8% 80px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:60px;
+}
+
+.hero-text{
+    max-width:650px;
+
+    animation:
+        heroIn 1s ease 3.1s both;
+}
+
+.small{
+    color:#ff003c;
+    font-size:12px;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(55px,8vw,110px);
+    line-height:.95;
+    letter-spacing:-5px;
+}
+
+h1 span{
+    display:block;
+    color:transparent;
+    -webkit-text-stroke:1px #ff003c;
+}
+
+.role{
+    margin-top:30px;
+    font-size:clamp(18px,2.5vw,28px);
+}
+
+#typing{
+    color:#ff003c;
+    text-shadow:0 0 15px #ff003c;
+}
+
+.blink{
+    color:#ff003c;
+    animation:blink .7s infinite;
+}
+
+.description{
+    margin-top:25px;
+    max-width:560px;
+
+    color:#999;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.8;
+}
+
+.button{
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 28px;
+
+    background:#ff003c;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:11px;
+    letter-spacing:1px;
+
+    box-shadow:0 0 15px rgba(255,0,60,.5);
+
+    transition:.3s;
+}
+
+.button:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 0 15px #ff003c,
+        0 0 40px #ff003c;
+}
+
+/* ===============================
+   PROFILE IMAGE
+================================ */
+
+.photo{
+    width:clamp(280px,35vw,500px);
+    aspect-ratio:1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    animation:
+        photoIn 1.2s ease 3.2s both;
+}
+
+.photo::before{
+    content:"";
+
+    position:absolute;
+    inset:5%;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,0,60,.45),
+            transparent 65%
+        );
+
+    filter:blur(25px);
+
+    animation:pulse 3s infinite;
+}
+
+.photo img{
+    width:80%;
+    height:80%;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:3px solid #ff003c;
+
+    box-shadow:
+        0 0 15px #ff003c,
+        0 0 45px rgba(255,0,60,.5);
+
+    position:relative;
+    z-index:2;
+}
+
+/* ===============================
+   ABOUT PREVIEW
+================================ */
+
+.about{
+    min-height:65vh;
+
+    padding:110px 8%;
+
+    display:grid;
+
+    grid-template-columns:1.4fr .8fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.label{
+    color:#ff003c;
+    font-size:11px;
+    letter-spacing:4px;
+    margin-bottom:20px;
+}
+
+.about h2{
+    font-size:clamp(35px,5vw,65px);
+    line-height:1.05;
+}
+
+.about h2 span{
+    color:#ff003c;
+}
+
+.about p{
+    margin-top:25px;
+
+    max-width:650px;
+
+    color:#999;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.8;
+}
+
+.quote{
+    padding:40px 30px;
+
+    border:1px solid rgba(255,0,60,.35);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,0,60,.08),
+            rgba(255,255,255,.01)
+        );
+}
+
+.quote-mark{
+    color:#ff003c;
+    font-size:60px;
+}
+
+#quoteText{
+    min-height:100px;
+
+    color:#fff;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.8;
+}
+
+.quote small{
+    display:block;
+    margin-top:20px;
+
+    color:#ff003c;
+
+    font-size:9px;
+    letter-spacing:3px;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+
+footer{
+    padding:30px 8%;
+
+    display:flex;
+    justify-content:space-between;
+
+    border-top:1px solid rgba(255,0,60,.15);
+
+    color:#777;
+
+    font-size:10px;
+}
+
+footer a{
+    color:#aaa;
+    margin-left:20px;
+    text-decoration:none;
+}
+
+footer a:hover{
+    color:#ff003c;
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
+
+@keyframes heroIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes photoIn{
+    from{
+        opacity:0;
+        transform:scale(.6);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(.9);
+        opacity:.6;
+    }
+
+    50%{
+        transform:scale(1.08);
+        opacity:1;
+    }
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width:900px){
+
+    nav{
+        padding:0 20px;
+    }
+
+    nav ul{
+        gap:10px;
+    }
+
+    nav ul a{
+        font-size:7px;
+    }
+
+    .brand{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:120px 25px 70px;
+    }
+
+    .description{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .photo{
+        width:min(80vw,360px);
+    }
+
+    .about{
+        grid-template-columns:1fr;
+        padding:80px 25px;
+        text-align:center;
+    }
+
+    .about p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CURTAIN -->
+<div id="loader">
+    <div class="curtain left"></div>
+    <div class="curtain right"></div>
+
+    <div class="loader-text">
+        PRATIK SINGH
+    </div>
+</div>
+
+<!-- PROGRESS -->
+<div id="progress"></div>
+
+<!-- NAVBAR -->
+<nav>
+
+    <a href="index.html" class="logo">
+
+        <span class="ps">PS</span>
+
+        <span class="brand">
+            PRATIK
+        </span>
+
+    </a>
+
+    <ul>
+
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="skills.html">SKILLS</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="resume.html">RESUME</a></li>
+
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <div class="small">
+            HELLO, I'M
+        </div>
+
+        <h1>
+            PRATIK
+            <span>SINGH</span>
+        </h1>
+
+        <div class="role">
+
+            I'M A
+
+            <span id="typing"></span>
+
+            <span class="blink">|</span>
+
+        </div>
+
+        <p class="description">
+
+            I build modern websites, creative digital experiences,
+            and technology projects with passion and curiosity.
+
+        </p>
+
+        <a
+            href="projects.html"
+            class="button"
+        >
+            VIEW MY PROJECTS
+        </a>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div class="photo">
+
+        <img
+            src="assets/images/profile.jpg"
+            alt="Pratik Singh"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+    <div>
+
+        <div class="label">
+            ABOUT ME
+        </div>
+
+        <h2>
+            Building Ideas Into
+            <span>Digital Reality.</span>
+        </h2>
+
+        <p>
+
+            I'm a Class 12 student and web developer interested in
+            web development, programming, coding projects,
+            and technology.
+
+        </p>
+
+        <a
+            href="about.html"
+            class="button"
+        >
+            DISCOVER MORE
+        </a>
+
+    </div>
+
+
+    <div class="quote">
+
+        <div class="quote-mark">
+            "
+        </div>
+
+        <p id="quoteText"></p>
+
+        <small>
+            DEVELOPER MINDSET
+        </small>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        © 2026 Pratik Singh
+    </div>
+
+    <div>
+
+        <a
+            href="https://github.com/"
+            target="_blank"
+        >
+            GitHub
+        </a>
+
+        <a
+            href="#"
+            target="_blank"
+        >
+            Instagram
+        </a>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   LOADER
+========================================= */
+
+setTimeout(() => {
+
+    const loader =
+        document.getElementById("loader");
+
+    loader.style.animation =
+        "loaderOut .8s ease forwards";
+
+}, 3200);
+
+
+/* =========================================
+   TYPING
+========================================= */
+
+const words = [
+    "Web Developer",
+    "Programmer",
+    "Creator"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const typing =
+    document.getElementById("typing");
+
+function type(){
+
+    const word =
+        words[wordIndex];
+
+    if(!deleting){
+
+        charIndex++;
+
+        typing.textContent =
+            word.substring(0,charIndex);
+
+        if(charIndex === word.length){
+
+            deleting = true;
+
+            setTimeout(type,1400);
+
+            return;
+        }
+
+    }else{
+
+        charIndex--;
+
+        typing.textContent =
+            word.substring(0,charIndex);
+
+        if(charIndex === 0){
+
+            deleting = false;
+
+            wordIndex =
+                (wordIndex + 1) % words.length;
+        }
+    }
+
+    setTimeout(
+        type,
+        deleting ? 55 : 90
+    );
+}
+
+setTimeout(type,3800);
+
+
+/* =========================================
+   QUOTE
+========================================= */
+
+const quote =
+"Great software starts with a simple idea and grows through code.";
+
+const quoteElement =
+document.getElementById("quoteText");
+
+let quoteIndex = 0;
+
+function typeQuote(){
+
+    if(quoteIndex < quote.length){
+
+        quoteElement.textContent +=
+            quote.charAt(quoteIndex);
+
+        quoteIndex++;
+
+        setTimeout(
+            typeQuote,
+            45
+        );
+    }
+}
+
+setTimeout(typeQuote,4200);
+
+
+/* =========================================
+   SCROLL PROGRESS
+========================================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scroll =
+            window.scrollY;
+
+        const height =
+            document.documentElement.scrollHeight
+            - window.innerHeight;
+
+        const percentage =
+            height > 0
+            ? (scroll / height) * 100
+            : 0;
+
+        document.getElementById(
+            "progress"
+        ).style.width =
+            percentage + "%";
+
+    },
+    {passive:true}
+);
+
+</script>
+
+</body>
+</html>

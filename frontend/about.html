@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About | Pratik Singh</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:'Orbitron',sans-serif;
+    overflow-x:hidden;
+}
+
+/* PROGRESS */
+
+#progress{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:3px;
+    background:#ff003c;
+    box-shadow:0 0 15px #ff003c;
+    z-index:9999;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(5,5,5,.88);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(255,0,60,.2);
+
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    text-decoration:none;
+    color:white;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.ps{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #ff003c;
+    color:#ff003c;
+
+    transition:.3s;
+}
+
+.logo:hover .ps{
+    box-shadow:
+        0 0 10px #ff003c,
+        0 0 30px #ff003c;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav ul a{
+    color:#aaa;
+    text-decoration:none;
+
+    font-size:10px;
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+nav ul a:hover,
+nav ul a.active{
+    color:#ff003c;
+    text-shadow:0 0 10px #ff003c;
+}
+
+/* HERO */
+
+.hero{
+    min-height:60vh;
+
+    padding:150px 8% 80px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.label{
+    color:#ff003c;
+    font-size:11px;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(55px,9vw,120px);
+    line-height:.9;
+    letter-spacing:-5px;
+
+    animation:fadeUp 1s ease both;
+}
+
+.hero h1 span{
+    color:transparent;
+    -webkit-text-stroke:1px #ff003c;
+}
+
+.hero p{
+    max-width:700px;
+
+    margin-top:35px;
+
+    color:#999;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.8;
+
+    animation:fadeUp 1s ease .2s both;
+}
+
+/* ABOUT */
+
+.about{
+    padding:80px 8% 120px;
+
+    display:grid;
+
+    grid-template-columns:1.2fr .8fr;
+
+    gap:80px;
+}
+
+.about h2{
+    font-size:clamp(32px,4vw,55px);
+    line-height:1.1;
+}
+
+.about h2 span{
+    color:#ff003c;
+}
+
+.about-text p{
+    margin-top:25px;
+
+    color:#aaa;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.9;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:35px;
+}
+
+.info-card{
+    padding:20px;
+
+    border:1px solid rgba(255,0,60,.25);
+
+    background:rgba(255,0,60,.03);
+
+    transition:.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-5px);
+
+    border-color:#ff003c;
+
+    box-shadow:0 0 25px rgba(255,0,60,.15);
+}
+
+.info-card small{
+    color:#777;
+    font-size:9px;
+}
+
+.info-card strong{
+    display:block;
+
+    margin-top:8px;
+
+    font-size:13px;
+}
+
+/* PHOTO */
+
+.photo-card{
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.photo-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    background:rgba(255,0,60,.2);
+
+    filter:blur(60px);
+}
+
+.photo-card img{
+    position:relative;
+    z-index:2;
+
+    width:min(100%,400px);
+
+    aspect-ratio:1;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:3px solid #ff003c;
+
+    box-shadow:
+        0 0 20px #ff003c,
+        0 0 70px rgba(255,0,60,.4);
+}
+
+/* VALUES */
+
+.values{
+    padding:100px 8%;
+
+    background:#080808;
+
+    border-top:1px solid rgba(255,0,60,.1);
+}
+
+.values h2{
+    font-size:clamp(35px,5vw,65px);
+    margin-bottom:50px;
+}
+
+.values h2 span{
+    color:#ff003c;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    padding:35px 25px;
+
+    border:1px solid rgba(255,0,60,.2);
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#ff003c;
+    box-shadow:0 0 30px rgba(255,0,60,.15);
+}
+
+.card-number{
+    color:#ff003c;
+    font-size:12px;
+}
+
+.card h3{
+    margin-top:25px;
+    font-size:18px;
+}
+
+.card p{
+    margin-top:15px;
+
+    color:#888;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.7;
+}
+
+/* FOOTER */
+
+footer{
+    padding:30px 8%;
+
+    display:flex;
+    justify-content:space-between;
+
+    color:#666;
+
+    border-top:1px solid rgba(255,0,60,.15);
+
+    font-size:10px;
+}
+
+footer a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+footer a:hover{
+    color:#ff003c;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    nav{
+        padding:0 20px;
+    }
+
+    nav ul{
+        gap:9px;
+    }
+
+    nav ul a{
+        font-size:7px;
+    }
+
+    .brand{
+        display:none;
+    }
+
+    .hero{
+        padding:130px 25px 70px;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+        padding:60px 25px 90px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .values{
+        padding:70px 25px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PROGRESS -->
+
+<div id="progress"></div>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+
+        <span class="ps">PS</span>
+
+        <span class="brand">
+            PRATIK
+        </span>
+
+    </a>
+
+    <ul>
+
+        <li>
+            <a href="index.html">
+                HOME
+            </a>
+        </li>
+
+        <li>
+            <a href="about.html" class="active">
+                ABOUT
+            </a>
+        </li>
+
+        <li>
+            <a href="skills.html">
+                SKILLS
+            </a>
+        </li>
+
+        <li>
+            <a href="projects.html">
+                PROJECTS
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                CONTACT
+            </a>
+        </li>
+
+        <li>
+            <a href="resume.html">
+                RESUME
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="label">
+        WHO I AM
+    </div>
+
+    <h1>
+        ABOUT
+        <span>ME.</span>
+    </h1>
+
+    <p>
+        A student, developer and technology enthusiast
+        focused on turning ideas into useful digital
+        experiences.
+    </p>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+    <div class="about-text">
+
+        <div class="label">
+            MY STORY
+        </div>
+
+        <h2>
+            Curious Mind.
+            <span>Creative Code.</span>
+        </h2>
+
+        <p>
+            I'm Pratik Singh, a Class 12 student and
+            aspiring web developer. I enjoy creating
+            websites, experimenting with JavaScript,
+            learning programming and building practical
+            technology projects.
+        </p>
+
+        <p>
+            My approach is simple: learn something,
+            build something, improve it, and keep
+            exploring.
+        </p>
+
+
+        <div class="info">
+
+            <div class="info-card">
+
+                <small>
+                    NAME
+                </small>
+
+                <strong>
+                    Pratik Singh
+                </strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <small>
+                    ROLE
+                </small>
+
+                <strong>
+                    Student & Developer
+                </strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <small>
+                    FOCUS
+                </small>
+
+                <strong>
+                    Web Development
+                </strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <small>
+                    INTEREST
+                </small>
+
+                <strong>
+                    Technology
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PHOTO -->
+
+    <div class="photo-card">
+
+        <img
+            src="assets/images/profile.jpg"
+            alt="Pratik Singh"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- VALUES -->
+
+<section class="values">
+
+    <div class="label">
+        WHAT DRIVES ME
+    </div>
+
+    <h2>
+        My <span>Mindset.</span>
+    </h2>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-number">
+                01
+            </div>
+
+            <h3>
+                LEARN
+            </h3>
+
+            <p>
+                Technology changes quickly, so I enjoy
+                continuously learning new concepts,
+                tools and programming techniques.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                02
+            </div>
+
+            <h3>
+                BUILD
+            </h3>
+
+            <p>
+                I learn best by creating real projects
+                and turning concepts into working
+                applications.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                03
+            </div>
+
+            <h3>
+                IMPROVE
+            </h3>
+
+            <p>
+                Every project is an opportunity to improve
+                design, performance, usability and code
+                quality.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        © 2026 Pratik Singh
+    </div>
+
+    <div>
+
+        <a
+            href="https://github.com/"
+            target="_blank"
+        >
+            GitHub
+        </a>
+
+        <a
+            href="#"
+            target="_blank"
+        >
+            Instagram
+        </a>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* SCROLL PROGRESS */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scroll =
+            window.scrollY;
+
+        const height =
+            document.documentElement.scrollHeight
+            - window.innerHeight;
+
+        const progress =
+            height > 0
+            ? (scroll / height) * 100
+            : 0;
+
+        document.getElementById(
+            "progress"
+        ).style.width =
+            progress + "%";
+
+    },
+    {passive:true}
+);
+
+</script>
+
+</body>
+</html>
