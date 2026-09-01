@@ -1,13 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Projects | Pratik Singh</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap');
 
 *{
@@ -28,13 +31,36 @@ body{
 }
 
 /* =========================
+   BACKGROUND GRID
+========================= */
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background:
+        linear-gradient(rgba(255,0,60,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,0,60,.025) 1px,transparent 1px);
+
+    background-size:50px 50px;
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+/* =========================
    PROGRESS
 ========================= */
 
 #progress{
     position:fixed;
+
     top:0;
     left:0;
+
     width:0%;
     height:3px;
 
@@ -68,14 +94,14 @@ nav{
 
     backdrop-filter:blur(15px);
 
-    border-bottom:
-        1px solid rgba(255,0,60,.2);
+    border-bottom:1px solid rgba(255,0,60,.2);
 
     z-index:1000;
 }
 
 .logo{
     display:flex;
+
     align-items:center;
 
     gap:12px;
@@ -94,6 +120,7 @@ nav{
     height:40px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -134,8 +161,7 @@ nav ul a:hover,
 nav ul a.active{
     color:#ff003c;
 
-    text-shadow:
-        0 0 10px #ff003c;
+    text-shadow:0 0 10px #ff003c;
 }
 
 /* =========================
@@ -143,18 +169,40 @@ nav ul a.active{
 ========================= */
 
 .hero{
-    min-height:55vh;
+    min-height:62vh;
 
-    padding:
-        150px
-        8%
-        70px;
+    padding:150px 8% 80px;
 
     display:flex;
 
     flex-direction:column;
 
     justify-content:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    right:-180px;
+    top:80px;
+
+    border:1px solid rgba(255,0,60,.18);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 60px rgba(255,0,60,.08);
+
+    animation:rotate 15s linear infinite;
 }
 
 .label{
@@ -168,19 +216,19 @@ nav ul a.active{
 }
 
 .hero h1{
-    font-size:
-        clamp(55px,9vw,120px);
+    font-size:clamp(55px,9vw,120px);
 
     line-height:.9;
 
     letter-spacing:-5px;
+
+    animation:fadeUp .9s ease both;
 }
 
 .hero h1 span{
     color:transparent;
 
-    -webkit-text-stroke:
-        1px #ff003c;
+    -webkit-text-stroke:1px #ff003c;
 }
 
 .hero p{
@@ -193,6 +241,10 @@ nav ul a.active{
     font-family:Arial,sans-serif;
 
     line-height:1.8;
+
+    font-size:16px;
+
+    animation:fadeUp .9s ease .2s both;
 }
 
 /* =========================
@@ -200,15 +252,16 @@ nav ul a.active{
 ========================= */
 
 .projects{
-    padding:
-        80px
-        8%
-        120px;
+    padding:90px 8% 120px;
 
-    background:#080808;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,0,60,.025),
+            #080808
+        );
 
-    border-top:
-        1px solid rgba(255,0,60,.1);
+    border-top:1px solid rgba(255,0,60,.12);
 }
 
 .projects-heading{
@@ -216,8 +269,9 @@ nav ul a.active{
 }
 
 .projects-heading h2{
-    font-size:
-        clamp(35px,5vw,65px);
+    font-size:clamp(35px,5vw,65px);
+
+    line-height:1;
 }
 
 .projects-heading h2 span{
@@ -231,8 +285,7 @@ nav ul a.active{
 .project-grid{
     display:grid;
 
-    grid-template-columns:
-        repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
 
     gap:25px;
 }
@@ -244,7 +297,7 @@ nav ul a.active{
 .project{
     position:relative;
 
-    min-height:360px;
+    min-height:390px;
 
     padding:35px;
 
@@ -256,8 +309,7 @@ nav ul a.active{
 
     overflow:hidden;
 
-    border:
-        1px solid rgba(255,0,60,.25);
+    border:1px solid rgba(255,0,60,.25);
 
     background:
         linear-gradient(
@@ -266,7 +318,9 @@ nav ul a.active{
             rgba(255,255,255,.01)
         );
 
-    transition:.4s;
+    transition:.45s;
+
+    isolation:isolate;
 }
 
 .project::before{
@@ -279,29 +333,82 @@ nav ul a.active{
     background:
         linear-gradient(
             135deg,
-            transparent 40%,
-            rgba(255,0,60,.1)
+            transparent 35%,
+            rgba(255,0,60,.13),
+            transparent 70%
         );
 
-    opacity:0;
+    transform:translateX(-100%);
 
-    transition:.4s;
+    transition:.6s;
+
+    z-index:-1;
+}
+
+.project::after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-70px;
+    top:-70px;
+
+    border:1px solid rgba(255,0,60,.2);
+
+    border-radius:50%;
+
+    transition:.5s;
 }
 
 .project:hover{
-    transform:
-        translateY(-10px);
+    transform:translateY(-10px);
 
-    border-color:
-        #ff003c;
+    border-color:#ff003c;
 
     box-shadow:
-        0 0 35px
-        rgba(255,0,60,.18);
+        0 0 35px rgba(255,0,60,.18),
+        inset 0 0 35px rgba(255,0,60,.03);
 }
 
 .project:hover::before{
-    opacity:1;
+    transform:translateX(100%);
+}
+
+.project:hover::after{
+    transform:scale(1.5);
+
+    opacity:.4;
+}
+
+/* =========================
+   FEATURED
+========================= */
+
+.featured{
+    grid-column:span 2;
+
+    min-height:450px;
+
+    background:
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(255,0,60,.2),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #120307,
+            #050505
+        );
+}
+
+.featured h3{
+    font-size:clamp(30px,5vw,60px);
+
+    line-height:1;
 }
 
 /* =========================
@@ -312,15 +419,21 @@ nav ul a.active{
     position:absolute;
 
     top:25px;
-
     right:30px;
 
     font-size:55px;
 
     font-weight:800;
 
-    color:
-        rgba(255,0,60,.12);
+    color:rgba(255,0,60,.12);
+
+    transition:.3s;
+}
+
+.project:hover .project-number{
+    color:rgba(255,0,60,.25);
+
+    transform:scale(1.1);
 }
 
 /* =========================
@@ -331,25 +444,27 @@ nav ul a.active{
     position:absolute;
 
     top:30px;
-
     left:30px;
 
     width:60px;
-
     height:60px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
-    border:
-        1px solid #ff003c;
+    border:1px solid #ff003c;
 
     color:#ff003c;
 
-    font-size:12px;
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    background:rgba(255,0,60,.03);
+
+    box-shadow:0 0 15px rgba(255,0,60,.08);
 }
 
 /* =========================
@@ -362,6 +477,14 @@ nav ul a.active{
     font-size:24px;
 
     margin-bottom:15px;
+
+    transition:.3s;
+}
+
+.project:hover h3{
+    color:#ff003c;
+
+    text-shadow:0 0 12px rgba(255,0,60,.4);
 }
 
 .project p{
@@ -375,7 +498,7 @@ nav ul a.active{
 
     font-size:14px;
 
-    max-width:550px;
+    max-width:600px;
 }
 
 /* =========================
@@ -395,23 +518,29 @@ nav ul a.active{
 }
 
 .tags span{
-    padding:
-        7px
-        10px;
+    padding:7px 10px;
 
-    border:
-        1px solid
-        rgba(255,0,60,.3);
+    border:1px solid rgba(255,0,60,.3);
 
     color:#aaa;
 
     font-size:8px;
 
     letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.tags span:hover{
+    border-color:#ff003c;
+
+    color:#fff;
+
+    box-shadow:0 0 10px rgba(255,0,60,.15);
 }
 
 /* =========================
-   PROJECT BUTTON
+   BUTTONS
 ========================= */
 
 .project-buttons{
@@ -419,24 +548,25 @@ nav ul a.active{
 
     display:flex;
 
+    flex-wrap:wrap;
+
     gap:10px;
 
     margin-top:22px;
 }
 
 .project-button{
-    padding:
-        11px
-        16px;
+    padding:11px 16px;
 
     color:#fff;
 
     text-decoration:none;
 
-    border:
-        1px solid #ff003c;
+    border:1px solid #ff003c;
 
     font-size:9px;
+
+    letter-spacing:1px;
 
     transition:.3s;
 }
@@ -444,37 +574,50 @@ nav ul a.active{
 .project-button:hover{
     background:#ff003c;
 
+    color:#fff;
+
     box-shadow:
-        0 0 15px
-        rgba(255,0,60,.5);
+        0 0 15px #ff003c,
+        0 0 30px rgba(255,0,60,.3);
+
+    transform:translateY(-2px);
+}
+
+.project-button.secondary{
+    border-color:rgba(255,255,255,.2);
+
+    color:#aaa;
+}
+
+.project-button.secondary:hover{
+    background:#fff;
+
+    color:#000;
+
+    border-color:#fff;
+
+    box-shadow:none;
 }
 
 /* =========================
-   FEATURED PROJECT
+   PROJECT MINI LABEL
 ========================= */
 
-.featured{
-    grid-column:
-        span 2;
+.status{
+    position:absolute;
 
-    min-height:430px;
+    top:105px;
+    left:30px;
 
-    background:
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(255,0,60,.18),
-            transparent 35%
-        ),
-        linear-gradient(
-            145deg,
-            #100307,
-            #050505
-        );
-}
+    padding:6px 10px;
 
-.featured h3{
-    font-size:
-        clamp(30px,5vw,60px);
+    border:1px solid rgba(255,0,60,.3);
+
+    color:#ff003c;
+
+    font-size:7px;
+
+    letter-spacing:2px;
 }
 
 /* =========================
@@ -486,19 +629,29 @@ nav ul a.active{
 
     display:grid;
 
-    grid-template-columns:
-        repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
 
     gap:20px;
 }
 
 .stat{
-    padding:30px;
+    padding:35px 25px;
 
     text-align:center;
 
-    border:
-        1px solid rgba(255,0,60,.2);
+    border:1px solid rgba(255,0,60,.2);
+
+    background:rgba(255,0,60,.025);
+
+    transition:.3s;
+}
+
+.stat:hover{
+    border-color:#ff003c;
+
+    transform:translateY(-5px);
+
+    box-shadow:0 0 25px rgba(255,0,60,.12);
 }
 
 .stat strong{
@@ -506,7 +659,9 @@ nav ul a.active{
 
     color:#ff003c;
 
-    font-size:40px;
+    font-size:42px;
+
+    text-shadow:0 0 15px rgba(255,0,60,.4);
 }
 
 .stat span{
@@ -522,13 +677,80 @@ nav ul a.active{
 }
 
 /* =========================
+   CTA
+========================= */
+
+.cta{
+    margin-top:90px;
+
+    padding:60px 40px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,0,60,.25);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,0,60,.1),
+            transparent 60%
+        );
+}
+
+.cta h2{
+    font-size:clamp(28px,4vw,50px);
+}
+
+.cta h2 span{
+    color:#ff003c;
+}
+
+.cta p{
+    margin:20px auto 0;
+
+    max-width:600px;
+
+    color:#888;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.7;
+}
+
+.cta-button{
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 28px;
+
+    background:#ff003c;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.cta-button:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 0 20px #ff003c,
+        0 0 45px rgba(255,0,60,.4);
+}
+
+/* =========================
    FOOTER
 ========================= */
 
 footer{
-    padding:
-        30px
-        8%;
+    padding:30px 8%;
 
     display:flex;
 
@@ -536,8 +758,7 @@ footer{
 
     color:#666;
 
-    border-top:
-        1px solid rgba(255,0,60,.15);
+    border-top:1px solid rgba(255,0,60,.15);
 
     font-size:10px;
 }
@@ -548,10 +769,42 @@ footer a{
     text-decoration:none;
 
     margin-left:20px;
+
+    transition:.3s;
 }
 
 footer a:hover{
     color:#ff003c;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes rotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
 }
 
 /* =========================
@@ -577,17 +830,11 @@ footer a:hover{
     }
 
     .hero{
-        padding:
-            130px
-            25px
-            70px;
+        padding:130px 25px 70px;
     }
 
     .projects{
-        padding:
-            60px
-            25px
-            90px;
+        padding:60px 25px 90px;
     }
 
     .project-grid{
@@ -595,12 +842,33 @@ footer a:hover{
     }
 
     .featured{
-        grid-column:
-            span 1;
+        grid-column:span 1;
+    }
+
+    .project{
+        min-height:420px;
+
+        padding:30px 25px;
+    }
+
+    .project-icon{
+        left:25px;
+    }
+
+    .project-number{
+        right:20px;
+    }
+
+    .status{
+        left:25px;
     }
 
     .stats{
         grid-template-columns:1fr;
+    }
+
+    .cta{
+        padding:45px 25px;
     }
 
     footer{
@@ -610,8 +878,11 @@ footer a:hover{
 
         text-align:center;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
@@ -701,8 +972,8 @@ footer a:hover{
 
     <p>
         A collection of websites, applications and
-        technology experiments created while learning
-        and developing my skills.
+        technology experiments created while learning,
+        developing and exploring new ideas.
     </p>
 
 </section>
@@ -730,7 +1001,9 @@ footer a:hover{
     <div class="project-grid">
 
 
-        <!-- FEATURED -->
+        <!-- =========================
+             PROJECT 01
+        ========================== -->
 
         <article class="project featured">
 
@@ -742,6 +1015,10 @@ footer a:hover{
                 WEB
             </div>
 
+            <div class="status">
+                CURRENT PORTFOLIO
+            </div>
+
             <h3>
                 PRATIK PORTFOLIO
             </h3>
@@ -750,6 +1027,8 @@ footer a:hover{
                 A cinematic personal portfolio website
                 designed to showcase my skills, projects,
                 learning journey and developer profile.
+                Built with a dark futuristic interface,
+                animations and responsive layouts.
             </p>
 
             <div class="tags">
@@ -758,23 +1037,26 @@ footer a:hover{
                 <span>CSS</span>
                 <span>JAVASCRIPT</span>
                 <span>RESPONSIVE</span>
+                <span>UI/UX</span>
 
             </div>
 
             <div class="project-buttons">
 
                 <a
-                    href="#"
+                    href="index.html"
                     class="project-button"
                 >
-                    LIVE DEMO
+                    LIVE SITE
                 </a>
 
                 <a
-                    href="#"
-                    class="project-button"
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-button secondary"
                 >
-                    SOURCE CODE
+                    GITHUB
                 </a>
 
             </div>
@@ -782,7 +1064,9 @@ footer a:hover{
         </article>
 
 
-        <!-- PROJECT 2 -->
+        <!-- =========================
+             PROJECT 02
+        ========================== -->
 
         <article class="project">
 
@@ -827,7 +1111,9 @@ footer a:hover{
         </article>
 
 
-        <!-- PROJECT 3 -->
+        <!-- =========================
+             PROJECT 03
+        ========================== -->
 
         <article class="project">
 
@@ -854,6 +1140,7 @@ footer a:hover{
                 <span>HTML</span>
                 <span>CSS</span>
                 <span>JAVASCRIPT</span>
+                <span>ECOMMERCE</span>
 
             </div>
 
@@ -871,7 +1158,9 @@ footer a:hover{
         </article>
 
 
-        <!-- PROJECT 4 -->
+        <!-- =========================
+             PROJECT 04
+        ========================== -->
 
         <article class="project">
 
@@ -916,7 +1205,9 @@ footer a:hover{
         </article>
 
 
-        <!-- PROJECT 5 -->
+        <!-- =========================
+             PROJECT 05
+        ========================== -->
 
         <article class="project">
 
@@ -961,7 +1252,9 @@ footer a:hover{
         </article>
 
 
-        <!-- PROJECT 6 -->
+        <!-- =========================
+             PROJECT 06
+        ========================== -->
 
         <article class="project">
 
@@ -1027,10 +1320,11 @@ footer a:hover{
 
         </div>
 
+
         <div class="stat">
 
             <strong>
-                05+
+                10+
             </strong>
 
             <span>
@@ -1038,6 +1332,7 @@ footer a:hover{
             </span>
 
         </div>
+
 
         <div class="stat">
 
@@ -1050,6 +1345,31 @@ footer a:hover{
             </span>
 
         </div>
+
+    </div>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <div class="cta">
+
+        <h2>
+            Have an <span>Idea?</span>
+        </h2>
+
+        <p>
+            I'm always interested in learning, building
+            and experimenting with new technology projects.
+        </p>
+
+        <a
+            href="contact.html"
+            class="cta-button"
+        >
+            LET'S CONNECT
+        </a>
 
     </div>
 
@@ -1071,6 +1391,7 @@ footer a:hover{
         <a
             href="https://github.com/"
             target="_blank"
+            rel="noopener noreferrer"
         >
             GitHub
         </a>
@@ -1094,7 +1415,9 @@ footer a:hover{
 ========================= */
 
 window.addEventListener(
+
     "scroll",
+
     () => {
 
         const scroll =
@@ -1102,7 +1425,8 @@ window.addEventListener(
 
         const height =
             document.documentElement.scrollHeight
-            - window.innerHeight;
+            -
+            window.innerHeight;
 
         const progress =
             height > 0
@@ -1115,10 +1439,15 @@ window.addEventListener(
             progress + "%";
 
     },
-    {passive:true}
+
+    {
+        passive:true
+    }
+
 );
 
 </script>
 
 </body>
+
 </html>

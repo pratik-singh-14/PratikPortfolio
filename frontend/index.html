@@ -2,12 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Pratik Singh | Student & Web Developer</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap');
 
 *{
@@ -96,6 +98,7 @@ body{
     width:5px;
     height:100%;
     background:#ff003c;
+
     box-shadow:
         0 0 10px #ff003c,
         0 0 30px #ff003c,
@@ -333,6 +336,7 @@ h1 span{
 
 .button:hover{
     transform:translateY(-4px);
+
     box-shadow:
         0 0 15px #ff003c,
         0 0 40px #ff003c;
@@ -392,6 +396,17 @@ h1 span{
 
     position:relative;
     z-index:2;
+
+    transition:.4s;
+}
+
+.photo img:hover{
+    transform:scale(1.04);
+
+    box-shadow:
+        0 0 20px #ff003c,
+        0 0 60px #ff003c,
+        0 0 100px rgba(255,0,60,.4);
 }
 
 /* ===============================
@@ -604,31 +619,50 @@ footer a:hover{
         gap:15px;
         text-align:center;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
-<!-- CURTAIN -->
+<!-- ===============================
+     CURTAIN LOADER
+================================ -->
+
 <div id="loader">
+
     <div class="curtain left"></div>
+
     <div class="curtain right"></div>
 
     <div class="loader-text">
-        PRATIK SINGH
+       WELCOME!
     </div>
+
 </div>
 
-<!-- PROGRESS -->
+
+<!-- ===============================
+     SCROLL PROGRESS
+================================ -->
+
 <div id="progress"></div>
 
-<!-- NAVBAR -->
+
+<!-- ===============================
+     NAVBAR
+================================ -->
+
 <nav>
 
     <a href="index.html" class="logo">
 
-        <span class="ps">PS</span>
+        <span class="ps">
+            PS
+        </span>
 
         <span class="brand">
             PRATIK
@@ -638,19 +672,50 @@ footer a:hover{
 
     <ul>
 
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="skills.html">SKILLS</a></li>
-        <li><a href="projects.html">PROJECTS</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-        <li><a href="resume.html">RESUME</a></li>
+        <li>
+            <a href="index.html">
+                HOME
+            </a>
+        </li>
+
+        <li>
+            <a href="about.html">
+                ABOUT
+            </a>
+        </li>
+
+        <li>
+            <a href="skills.html">
+                SKILLS
+            </a>
+        </li>
+
+        <li>
+            <a href="projects.html">
+                PROJECTS
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                CONTACT
+            </a>
+        </li>
+
+        <li>
+            <a href="resume.html">
+                RESUME
+            </a>
+        </li>
 
     </ul>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- ===============================
+     HERO
+================================ -->
 
 <section class="hero">
 
@@ -671,7 +736,9 @@ footer a:hover{
 
             <span id="typing"></span>
 
-            <span class="blink">|</span>
+            <span class="blink">
+                |
+            </span>
 
         </div>
 
@@ -692,12 +759,14 @@ footer a:hover{
     </div>
 
 
-    <!-- PROFILE -->
+    <!-- ===============================
+         PROFILE PHOTO
+    ================================= -->
 
     <div class="photo">
 
         <img
-            src="assets/images/profile.jpg"
+            src="assets/images/pratik.jpg"
             alt="Pratik Singh"
         >
 
@@ -706,7 +775,9 @@ footer a:hover{
 </section>
 
 
-<!-- ABOUT -->
+<!-- ===============================
+     ABOUT
+================================ -->
 
 <section class="about">
 
@@ -717,8 +788,13 @@ footer a:hover{
         </div>
 
         <h2>
+
             Building Ideas Into
-            <span>Digital Reality.</span>
+
+            <span>
+                Digital Reality.
+            </span>
+
         </h2>
 
         <p>
@@ -756,7 +832,9 @@ footer a:hover{
 </section>
 
 
-<!-- FOOTER -->
+<!-- ===============================
+     FOOTER
+================================ -->
 
 <footer>
 
@@ -769,6 +847,7 @@ footer a:hover{
         <a
             href="https://github.com/"
             target="_blank"
+            rel="noopener noreferrer"
         >
             GitHub
         </a>
@@ -803,7 +882,7 @@ setTimeout(() => {
 
 
 /* =========================================
-   TYPING
+   TYPING EFFECT
 ========================================= */
 
 const words = [
@@ -813,60 +892,92 @@ const words = [
 ];
 
 let wordIndex = 0;
+
 let charIndex = 0;
+
 let deleting = false;
 
 const typing =
     document.getElementById("typing");
+
 
 function type(){
 
     const word =
         words[wordIndex];
 
+
     if(!deleting){
 
         charIndex++;
 
         typing.textContent =
-            word.substring(0,charIndex);
+            word.substring(
+                0,
+                charIndex
+            );
+
 
         if(charIndex === word.length){
 
             deleting = true;
 
-            setTimeout(type,1400);
+            setTimeout(
+                type,
+                1400
+            );
 
             return;
+
         }
 
-    }else{
+    }
+
+    else{
 
         charIndex--;
 
         typing.textContent =
-            word.substring(0,charIndex);
+            word.substring(
+                0,
+                charIndex
+            );
+
 
         if(charIndex === 0){
 
             deleting = false;
 
             wordIndex =
-                (wordIndex + 1) % words.length;
+                (wordIndex + 1)
+                % words.length;
+
         }
+
     }
 
+
     setTimeout(
+
         type,
-        deleting ? 55 : 90
+
+        deleting
+            ? 55
+            : 90
+
     );
+
 }
 
-setTimeout(type,3800);
+
+setTimeout(
+    type,
+    3800
+);
 
 
 /* =========================================
-   QUOTE
+   QUOTE TYPING EFFECT
 ========================================= */
 
 const quote =
@@ -877,23 +988,36 @@ document.getElementById("quoteText");
 
 let quoteIndex = 0;
 
+
 function typeQuote(){
 
-    if(quoteIndex < quote.length){
+    if(
+        quoteIndex <
+        quote.length
+    ){
 
         quoteElement.textContent +=
-            quote.charAt(quoteIndex);
+            quote.charAt(
+                quoteIndex
+            );
 
         quoteIndex++;
+
 
         setTimeout(
             typeQuote,
             45
         );
+
     }
+
 }
 
-setTimeout(typeQuote,4200);
+
+setTimeout(
+    typeQuote,
+    4200
+);
 
 
 /* =========================================
@@ -901,20 +1025,27 @@ setTimeout(typeQuote,4200);
 ========================================= */
 
 window.addEventListener(
+
     "scroll",
+
     () => {
 
         const scroll =
             window.scrollY;
 
+
         const height =
-            document.documentElement.scrollHeight
-            - window.innerHeight;
+            document.documentElement
+                .scrollHeight
+            -
+            window.innerHeight;
+
 
         const percentage =
             height > 0
-            ? (scroll / height) * 100
-            : 0;
+                ? (scroll / height) * 100
+                : 0;
+
 
         document.getElementById(
             "progress"
@@ -922,7 +1053,11 @@ window.addEventListener(
             percentage + "%";
 
     },
-    {passive:true}
+
+    {
+        passive:true
+    }
+
 );
 
 </script>
